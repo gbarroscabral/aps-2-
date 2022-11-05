@@ -1,0 +1,140 @@
+/*
+APS 2 – Programação Estruturada
+Professor: Sérgio Assunção Monteiro
+Nome da disciplina: Programação Estruturada
+Código da Turma: 931
+Nome do aluno: Gabriel Barros Cabral
+Matrícula: 2022101115
+unidade: Meier V
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define SIZE 20
+char  nome [SIZE] [50];
+int cpf [SIZE];
+int	telefone [SIZE];
+int datadenascimento[SIZE];
+int rg  [SIZE];
+char endereco [SIZE] [40];
+char email [SIZE] [50];
+int op;
+void cadastro ();
+void pesquisa ();
+void lista ();
+
+int main(void){
+	do{
+		system("cls");
+		printf("\n----Menu----\n1 - Cadastrar\n2 - Listar todos\n3 - Pesquisar\n4 - Sair\n");
+		scanf("%d", &op);
+		switch(op){
+			case 1 :
+				cadastro();
+				
+				break;
+			case 2 :
+				lista();
+				break;
+			case 3 :pesquisa();
+				break;
+			case 4 :	
+				system("exit");
+				break ;
+			default :	
+				printf("Opcao invalida") ;
+				getchar();
+				getchar();
+				break ;
+		}
+	}while(op!=4);
+}
+
+void lista(){
+	int i;
+	int opcao;
+	for(i=0;i<SIZE;i++){
+		if(cpf[i]!=0){
+		
+			printf("\nNome:  %s\nCPF: %d\nTelefone: %d\nData de Nascimento: %d\nRG: %d\nEndereco: %s\nEmail :%s\n ", nome[i],cpf[i],telefone[i],datadenascimento[i],rg[i],endereco[i], email[i]);
+		 
+		}else {
+			break;
+		}
+	}
+		printf("\n\nDigite qualquer tecla para retornar ao menu... ");
+		scanf("%d", &opcao);
+//	getchar();
+//	getchar();
+}
+void pesquisa() {
+ int cpfPesquisa;
+ int i;
+ int opcao;
+ char emailPesquisa [50];
+ int telefonePesquisa;
+ int nascimentoPesquisa;
+ int rgPesquisa;
+ char nomePesquisa [50];
+ char enderecoPesquisa [40];
+	do{
+		printf("\nDigite 1 para pesquisar o cpf, \n2 para pesquisar o telefone\n");
+		scanf("%d", &opcao);
+		switch(opcao){
+			case 1:
+				printf("\nDigite o cpf: ");
+				scanf("%d", &cpfPesquisa);
+				for(i=0;i<SIZE;i++){
+					if (cpf[i]==cpfPesquisa){
+					
+					printf("\nNome:  %s\nCPF: %d\nTelefone: %d\nData de Nascimento: %d\nRG: %d\nEndereco: %s\nEmail :%s ", nome[i],cpf[i],telefone[i],datadenascimento[i],rg[i],endereco[i], email[i]);
+					}
+				
+				}
+				break;
+			case 2: 
+				printf("\nDigite o telefone: ");
+				scanf("%d", &telefonePesquisa);
+				for(i=0;i<SIZE;i++){
+					if (telefone[i]==telefonePesquisa){
+					
+					printf("\nNome:  %s\nCPF: %d\nTelefone: %d\nData de Nascimento: %d\nRG: %d\nEndereco: %s\nEmail :%s ", nome[i],cpf[i],telefone[i],datadenascimento[i],rg[i],endereco[i], email[i]);
+					}
+				
+				}
+				break;
+			
+			default:
+				printf("\nOpcao invalida");
+				break;
+		}
+		printf("\nDigite 1 para continuar pesquisando ");
+		scanf("%d", &opcao);
+		
+	}while(opcao==1);
+}
+void cadastro(){
+	static int linha;
+	int opcao;
+	do{
+		system("cls");
+		printf("\nDigite o Nome: ");
+		scanf("%s", &nome[linha]);
+		printf("\nDigite o Email: ");
+		scanf("%s", &email[linha]);
+		printf("\nDigite o CPF: ");
+		scanf("%d", &cpf[linha]);
+		printf("\nDigite o Telefone: ");
+		scanf("%d", &telefone[linha]);
+		printf("\nDigite o RG: ");
+		scanf("%d", &rg[linha]);
+		printf("\nDigite a Data de Nascimento: ");
+		scanf("%d", &datadenascimento[linha]);
+		printf("\nDigite o Endereco: ");
+		scanf("%s", &endereco[linha]);
+		printf("\nDigite 1 para continuar ou outro valor para sair: ");
+		scanf("%d", &opcao);
+		linha++;
+		}while(opcao==1);
+	
+}
